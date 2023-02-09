@@ -1,0 +1,38 @@
+Sub EnterButtonToTable()
+'
+' EnterButtonToTable Macro
+'
+
+'
+    Range("C19").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=2*R[-4]C"
+    Range("C21").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=2*R[-4]C"
+    Range("C19").Select
+    ActiveCell.FormulaR1C1 = "=5*R[-4]C"
+    Range("C23").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=9.95*R[-10]C"
+    Range("C25").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=R[-12]C+R[-6]C+R[-4]C-R[-2]C"
+    Range("C7,C9,C11,C13,C15,C17,C19,C21,C23,C25").Select
+    Range("C25").Activate
+    Selection.Copy
+    Range("H12:Q12").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=True
+    Range("K12,N12,O12,P12,Q12").Select
+    Range("Q12").Activate
+    Application.CutCopyMode = False
+    Selection.Style = "Currency"
+    Range("C7").Select
+    ActiveCell.FormulaR1C1 = ""
+    Range("C7,C9,C11,C13,C15,C17,C19,C21,C23,C25").Select
+    Range("C25").Activate
+    Selection.ClearContents
+    Range("H12:Q12").Select
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+End Sub
